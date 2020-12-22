@@ -3,6 +3,7 @@ package com.dv.login.util;
 public enum UserType {
 	ADMIN("AD"),
 	USER("US"),
+//	STORE("ST"),
 	UNKNOWN("");
 	
 	private final String code;
@@ -20,6 +21,8 @@ public enum UserType {
 				return USER;
 			case "AD":
 				return ADMIN;
+//			case "ST":
+//				return STORE;
 			default:
 				throw new RuntimeException(String.format("존재하지 않는 유저타입 코드 '%s' 입니다.", code));
 		}
@@ -43,6 +46,19 @@ public enum UserType {
 				return "Admin";
 			default:
 				throw new RuntimeException(String.format("존재하지 않는 유저타입 코드 '%s' 입니다.", type.getCode()));
+		}
+	}
+	
+	public static String getRoleNameByCode(String code) {
+		switch(code) {
+			case "AD":
+				return "Admin";
+			case "US":
+				return "User";
+//			case "ST":
+//				return "Store";
+			default:
+				throw new RuntimeException(String.format("존재하지 않는 유저타입 코드 '%s' 입니다.", code));
 		}
 	}
 }

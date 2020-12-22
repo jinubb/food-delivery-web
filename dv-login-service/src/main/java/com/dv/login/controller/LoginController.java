@@ -46,10 +46,13 @@ public class LoginController {
 			@RequestParam(required = true) String password,
 			@RequestParam(required = false) String name,
 			@RequestParam(required = false) String phone,
-			@RequestParam(required = false, defaultValue = "false") boolean isAdmin) {
+			@RequestParam(required = false, defaultValue = "US") String type,
+			@RequestParam(required = false) String storeName,
+			@RequestParam(required = false) String storePhone,
+			@RequestParam(required = false) String storeType) {
 		ResponseContainer<User> response = ResponseContainer.emptyResponse();		
 		try {
-			response.setPayload(service.registerUser(email, password, name, phone, isAdmin));
+			response.setPayload(service.registerUser(email, password, name, phone, type, storeName, storePhone, storeType));
 		} catch(Exception e) {
 			logger.error("register:\n{}",e);
 			response.setError(e);
